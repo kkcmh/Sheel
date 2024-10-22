@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# 配置文件路径
+CONFIG_FILE="path/to/your/config/file"
+
+# 检查进程A是否启动
+if pgrep "进程A名称" > /dev/null 2>&1; then
+    echo "进程A正在运行，设置batch为Y"
+    # 使用sed命令将batch=N改为batch=Y
+    sed -i 's/^batch=N/batch=Y/' $CONFIG_FILE
+else
+    echo "进程A未运行，设置batch为N"
+    # 使用sed命令将batch=Y改为batch=N
+    sed -i 's/^batch=Y/batch=N/' $CONFIG_FILE
+fi
